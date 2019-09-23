@@ -11,7 +11,7 @@ class InventoriesSchema extends Schema {
       table.integer('quantity').unsigned().notNullable()
       table.float('price').notNullable()
       table.float('tax').notNullable()
-      table.integer('user_id').unsigned().references('id').inTable('user')
+      table.integer('user_id').unsigned().references('id').inTable('users')
       table.timestamps()
     })
   }
