@@ -16,6 +16,10 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
+
+Route.post('/register', 'AuthController.register')
+Route.post('/login', 'AuthController.login')
+
 Route.on('/').render('welcome')
 
 //Routes for users
@@ -43,7 +47,7 @@ Route.get('/api/sales/:id', 'SaleController.show')
 Route.put('/api/inventories/:id', 'InventoryController.update')
 Route.delete('/api/inventories/:id', 'InventoryController.destroy')
 Route.post('/api/inventories', 'InventoryController.store')
-Route.get('/api/inventories', 'InventoryController.index')
+Route.get('/api/inventories', 'InventoryController.index').middleware('auth')
 Route.get('/api/inventories/:id', 'InventoryController.show')
 
 //Routes for products
