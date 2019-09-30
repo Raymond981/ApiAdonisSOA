@@ -1,6 +1,7 @@
 'use strict'
 
 const Inventory = use('App/Models/Inventory')
+const Database = use('Database')
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
@@ -20,7 +21,7 @@ class InventoryController {
    * @param {View} ctx.view
    */
   async index ({ request, response, view }) {
-    let inventories = await Inventory.all()
+    let inventories = await Database.table('products').innerJoin('inventories', 'products.id', 'inventories.user_id')
     return response.json(inventories)
   }
 
