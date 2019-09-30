@@ -71,7 +71,7 @@ class InventoryController {
    * @param {View} ctx.view
    */
   async show ({ params, request, response, view }) {
-    let inventories = await Database.table('products').innerJoin('inventories', 'products.id', 'inventories.user_id').where('id',params.id)
+    let inventories = await Database.table('products').innerJoin('inventories', 'products.id', 'inventories.user_id').where('inventories.id',params.id)
     return response.json(inventories)
   }
 
@@ -105,7 +105,11 @@ class InventoryController {
     inventorie.user_id = request.input('user_id')
 
     await inventorie.save()
-    return response.json(inventorie)
+
+    let inventories = await Database.table('products').innerJoin('inventories', 'products.id', 'inventories.user_id').where('inventories.id', params.id)
+
+
+    return response.json(inventories)
   }
 
   /**
