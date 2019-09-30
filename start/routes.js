@@ -17,42 +17,42 @@
 const Route = use('Route')
 
 
-Route.post('/register', 'AuthController.register')
-Route.post('/login', 'AuthController.login')
+Route.post('/api/register', 'AuthController.register')
+Route.post('/api/login', 'AuthController.login')
 
 Route.on('/').render('welcome')
 
 //Routes for users
-Route.put('/api/users/:id', 'UserController.update')
-Route.delete('/api/users/:id', 'UserController.destroy')
-Route.post('/api/users', 'UserController.store')
-Route.get('/api/users', 'UserController.index')
-Route.get('/api/users/:id', 'UserController.show')
+Route.put('/api/users/:id', 'UserController.update').middleware('auth')
+Route.delete('/api/users/:id', 'UserController.destroy').middleware('auth')
+Route.post('/api/users', 'UserController.store').middleware('auth')
+Route.get('/api/users', 'UserController.index').middleware('auth')
+Route.get('/api/users/:id', 'UserController.show').middleware('auth')
 
 //Routes for transactions
-Route.put('/api/transactions/:id', 'TransactionController.update')
-Route.delete('/api/transactions/:id', 'TransactionController.destroy')
-Route.post('/api/transactions', 'TransactionController.store')
-Route.get('/api/transactions', 'TransactionController.index')
-Route.get('/api/transactions/:id', 'TransactionController.show')
+Route.put('/api/transactions/:id', 'TransactionController.update').middleware('auth')
+Route.delete('/api/transactions/:id', 'TransactionController.destroy').middleware('auth')
+Route.post('/api/transactions', 'TransactionController.store').middleware('auth')
+Route.get('/api/transactions', 'TransactionController.index').middleware('auth')
+Route.get('/api/transactions/:id', 'TransactionController.show').middleware('auth')
 
 //Routes for sales
-Route.put('/api/sales/:id', 'SaleController.update')
-Route.delete('/api/sales/:id', 'SaleController.destroy')
-Route.post('/api/sales', 'SaleController.store')
-Route.get('/api/sales', 'SaleController.index')
-Route.get('/api/sales/:id', 'SaleController.show')
+Route.put('/api/sales/:id', 'SaleController.update').middleware('auth')
+Route.delete('/api/sales/:id', 'SaleController.destroy').middleware('auth')
+Route.post('/api/sales', 'SaleController.store').middleware('auth')
+Route.get('/api/sales', 'SaleController.index').middleware('auth')
+Route.get('/api/sales/:id', 'SaleController.show').middleware('auth')
 
 //Routes for inventories
-Route.put('/api/inventories/:id', 'InventoryController.update')
-Route.delete('/api/inventories/:id', 'InventoryController.destroy')
-Route.post('/api/inventories', 'InventoryController.store')
+Route.put('/api/inventories/:id', 'InventoryController.update').middleware('auth')
+Route.delete('/api/inventories/:id', 'InventoryController.destroy').middleware('auth')
+Route.post('/api/inventories', 'InventoryController.store').middleware('auth')
 Route.get('/api/inventories', 'InventoryController.index').middleware('auth')
-Route.get('/api/inventories/:id', 'InventoryController.show')
+Route.get('/api/inventories/:id', 'InventoryController.show').middleware('auth')
 
 //Routes for products
-Route.put('/api/products/:id', 'ProductController.update')
-Route.delete('/api/products/:id', 'ProductController.destroy')
-Route.post('/api/products', 'ProductController.store')
-Route.get('/api/products', 'ProductController.index')
-Route.get('/api/products/:id', 'ProductController.show')
+Route.put('/api/products/:id', 'ProductController.update').middleware('auth')
+Route.delete('/api/products/:id', 'ProductController.destroy').middleware('auth')
+Route.post('/api/products', 'ProductController.store').middleware('auth')
+Route.get('/api/products', 'ProductController.index').middleware('auth')
+Route.get('/api/products/:id', 'ProductController.show').middleware('auth')
