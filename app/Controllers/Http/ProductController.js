@@ -1,7 +1,8 @@
 'use strict'
 
 const Product = use('App/Models/Product')
-
+const Inventory = use('App/Models/Inventory')
+const Transaction = use('App/Models/Transaction')
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
@@ -46,13 +47,29 @@ class ProductController {
    */
   async store ({ request, response }) {
     const product = new Product()
+    const inventory = new Inventory()
+    const transaction = new Transaction()
 
     product.code = request.input('code')
     product.name = request.input('name')
     product.description = request.input('description')
     product.image_url = request.input('image_url')
 
+    inventory.tax = request.input('tax')
+    inventory.quantity = request.input('quantity')
+    inventory.price = request.input('price')
+    inventory.user_id = request.input('user_id')
+
+    transaction.quantity = request.input('quantity')
+    transaction.type = 1
+
     await product.save()
+    inventory.product_id = product.id
+    await inventory.save()
+    transaction.inventory_id = inventory.id
+    await transaction.save()
+
+
     return response.json(product)
   }
 
