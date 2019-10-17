@@ -51,7 +51,7 @@ class SaleController {
     sale.quantity = request.input('quantity')
     sale.discount = request.input('discount')
     sale.total = request.input('total')
-    sale.satatus = request.input('status')
+    sale.status = request.input('status')
     sale.payment_method = request.input('payment_method')
 
     await sale.save()
@@ -100,7 +100,7 @@ class SaleController {
     sale.quantity = request.input('quantity')
     sale.discount = request.input('discount')
     sale.total = request.input('total')
-    sale.satatus = request.input('status')
+    sale.status = request.input('status')
     sale.payment_method = request.input('payment_method')
 
     await sale.save()
