@@ -21,7 +21,7 @@ class InventoryController {
    * @param {View} ctx.view
    */
   async index ({ request, response, view }) {
-    let inventories = await Database.table('products').innerJoin('inventories', 'products.id', 'inventories.user_id')
+    let inventories = await Database.table('products').innerJoin('inventories', 'products.id', 'inventories.product_id')
     return response.json(inventories)
   }
 
