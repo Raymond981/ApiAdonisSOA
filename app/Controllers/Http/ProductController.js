@@ -108,7 +108,7 @@ class ProductController {
    * @param {Response} ctx.response
    */
   async update ({ params, request, response }) {
-    let prodcut = await Product.find(params.id)
+    let product = await Product.find(params.id)
 
     product.code = request.input('code')
     product.name = request.input('name')
