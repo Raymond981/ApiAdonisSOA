@@ -106,7 +106,7 @@ class InventoryController {
 
     await inventorie.save()
 
-    let inventories = await Database.table('products').innerJoin('inventories', 'products.id', 'inventories.user_id').where('inventories.id', params.id)
+    let inventories = await Database.table('products').innerJoin('inventories', 'products.id', 'inventories.user_id')
 
 
     return response.json(inventories)
